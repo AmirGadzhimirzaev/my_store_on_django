@@ -1,0 +1,42 @@
+{% load static %}
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            {% if request.path == '/' %}
+            <h1 class="fw-light">Главная</h1>
+            <p class="lead text-body-secondary">Главная страница</p>
+
+            {% elif request.path == '/blog/' %}
+            <h1 class="fw-light">Блог</h1>
+            <p class="lead text-body-secondary">Здесь вы можете написать статью</p>
+            <a class="btn btn-primary mb-2" href="/blog/blog/create/" role="button">Добавить статью</a>
+
+            {% elif request.path == '/contacts/' %}
+            <h1 class="fw-light">Контакты</h1>
+            <p class="lead text-body-secondary">Список контактов</p>
+
+            {% elif request.path == '/product_list/' %}
+            <h1 class="fw-light">Список товаров</h1>
+            <p class="lead text-body-secondary">Здесь вы можете ознакомиться с имеющимися товарами</p>
+            <a class="btn btn-primary" href="/product/create/" role="button">Добавить продукт</a>
+
+            {% elif request.path == '/product/create/' %}
+            <h1 class="fw-light">Добавление товара</h1>
+            <p class="lead text-body-secondary">Здесь вы можете добавить товар</p>
+
+            {% elif '/update/' in request.path %}
+            <h1 class="fw-light">Изменение товара</h1>
+            <p class="lead text-body-secondary">Здесь вы можете изменить данные о товаре</p>
+
+            {% elif request.path == '/blog/blog/create/' %}
+            <h1 class="fw-light">Добавление статьи</h1>
+            <p class="lead text-body-secondary">Здесь вы можете добавить статью</p>
+
+            {% elif '/blog/blog/' in request.path %}
+            <h1 class="fw-light">Статья</h1>
+            <p class="display-6 lead text-body-secondary">{{blog.title}}</p>
+
+            {% endif %}
+        </div>
+    </div>
+</section>
