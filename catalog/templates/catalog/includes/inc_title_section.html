@@ -9,7 +9,9 @@
             {% elif request.path == '/blog/' %}
             <h1 class="fw-light">Блог</h1>
             <p class="lead text-body-secondary">Здесь вы можете написать статью</p>
+            {% if user.is_authenticated %}
             <a class="btn btn-primary mb-2" href="/blog/blog/create/" role="button">Добавить статью</a>
+            {% endif %}
 
             {% elif request.path == '/contacts/' %}
             <h1 class="fw-light">Контакты</h1>
@@ -18,7 +20,9 @@
             {% elif request.path == '/product_list/' %}
             <h1 class="fw-light">Список товаров</h1>
             <p class="lead text-body-secondary">Здесь вы можете ознакомиться с имеющимися товарами</p>
+            {% if user.is_authenticated %}
             <a class="btn btn-primary" href="/product/create/" role="button">Добавить продукт</a>
+            {% endif %}
 
             {% elif request.path == '/product/create/' %}
             <h1 class="fw-light">Добавление товара</h1>
@@ -35,6 +39,14 @@
             {% elif '/blog/blog/' in request.path %}
             <h1 class="fw-light">Статья</h1>
             <p class="display-6 lead text-body-secondary">{{blog.title}}</p>
+
+            {% elif '/users/login/' in request.path %}
+            <h1 class="fw-light">Sign in</h1>
+            <p class="display-6 lead text-body-secondary">Вход в аккаунт</p>
+
+            {% elif '/users/register/' in request.path %}
+            <h1 class="fw-light">Sign up</h1>
+            <p class="display-6 lead text-body-secondary">Регистрация</p>
 
             {% endif %}
         </div>
