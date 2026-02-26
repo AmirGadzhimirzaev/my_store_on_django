@@ -16,7 +16,7 @@ class StyleFormMixin:
 class ProductForm(StyleFormMixin, ModelForm):
     class Meta:
         model = Product
-        fields = '__all__'
+        exclude = ('views_counter', 'owner')
 
     def __init__(self, *args, **kwargs):
         super(ProductForm, self).__init__(*args, **kwargs)
@@ -41,3 +41,9 @@ class ProductForm(StyleFormMixin, ModelForm):
         if price is not None and price < 0:
             raise ValidationError('Цена не может быть отрицательной')
         return price
+
+
+class ProductModeratorForm(StyleFormMixin, ModelForm):
+    class Meta:
+        model = Product
+        fields = ('name', 'published')

@@ -12,6 +12,10 @@
     {% include 'catalog/includes/inc_menu.html' %}
 </header>
 <main>
+    <div class="text-center container">
+        <p class="lead text-body-secondary">Здраствуйте, {{ user.email }}</p>
+    </div>
+
     {% include 'catalog/includes/inc_title_section.html' %}
 
     {% block content %}
