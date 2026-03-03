@@ -1,6 +1,7 @@
 from django.core.cache import cache
+from unicodedata import category
 
-from catalog.models import Product
+from catalog.models import Product, Category
 from config.settings import CASH_ENABLED
 
 
@@ -18,3 +19,7 @@ def get_prod_from_cache():
     prods = Product.objects.all()
     cache.set(key, prods)
     return prods
+
+
+def get_category_prods_list(category_id):
+    return [product.name for product in Product.objects.filter(category_id=category_id)]
